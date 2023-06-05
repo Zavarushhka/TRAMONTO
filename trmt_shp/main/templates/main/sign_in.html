@@ -1,0 +1,32 @@
+{% load static %}
+
+<html>
+<head>
+  <title>Регистрация</title>
+  <link rel="stylesheet" href="{% static 'main/css/logsig.css' %}">
+</head>
+<body>
+<div class = "desk">
+  <div class="register">Регистрация</div>
+    <div class="container">
+      <form method="post" action="" class = "login_form" id="add-form">
+        {% csrf_token %}
+        <div class="input-box">
+          {{ form.nickname }}
+        </div>
+        <div class="error"><div class="error-label">{{ nickname_error }}</div></div>
+        <div class="input-box">
+          {{ form.password }}
+        </div>
+        <div class="error"><div class="error-label">{{ password_error }}</div></div>
+        <div class="input-box">
+          <input class = "input_place" name=pass_2 type="password" placeholder="Password" data-max-length = "20" data-min-length = "6" id = "3">
+        </div>
+        <div class="error"><div class="error-label">{{ password_error }}</div></div>
+        <button type="submit" class="input_button" >Войти</button>
+      </form>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</body>
+</html>

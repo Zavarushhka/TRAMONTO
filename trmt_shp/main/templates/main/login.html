@@ -1,0 +1,28 @@
+{% load static %}
+
+<html>
+<head>
+    <title>Вход в личный кабинет</title>
+    <link rel="stylesheet" href="{% static 'main/css/logsig.css' %}">
+</head>
+<body>
+    <div class = "desk">
+        <div class="register">Вход в личный кабинет</div>
+        <div class = "container">
+            <form method="post" action="" class="login_form" id = "add-form">
+                {% csrf_token %}
+                <div class="input-box">
+                    {{ form.nickname }}
+                </div>
+                <div class="error"><div class="error-label">{{ nickname_error }}</div></div>
+                <div class="input-box">
+                    {{ form.password }}
+                </div>
+                <div class="error"><div class="error-label">{{ password_error }}</div></div>
+                <button type="submit" class="input_button" >Войти</button>
+            </form>
+            <a class = "sign_in" href="/sign_in">Зарегистрироваться</a>
+        </div>
+    </div>
+</body>
+</html>

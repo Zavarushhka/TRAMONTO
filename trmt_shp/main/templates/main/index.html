@@ -1,0 +1,147 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Tramonto - заказ тортов</title>
+</head>
+<body>
+    <nav>
+        <div class='nav-item' onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'});">О нас</div>
+        <div class='nav-item' onclick="document.getElementById('team').scrollIntoView({behavior: 'smooth'});">Команда</div>
+        <div class='nav-item' onclick="document.getElementById('catalog').scrollIntoView({behavior: 'smooth'});">Каталог</div>
+        <div class='nav-item' onclick="document.getElementById('order').scrollIntoView({behavior: 'smooth'});">Заказать торт</div>
+        <a class='nav-item' href='/login/' >Войти</a>
+    </nav>
+    <header>
+        <h1>Заказать торт <span class='cake cake1'>здесь</span></h1>
+        <div class='arrow-next'><i class='fa-solid fa-arrow-down'></i></div>
+    </header>
+
+    <main>
+        <section class='section1' id='about'>
+            <h1>О нашей кондитерской</h1>
+            <div class='about-wrapper'>
+                <p>Наша кондитерская основана совершенно недавно, но отсутствие большого опыта на рынке не делает из нас делетантов в этом деле. Наоборот - мы подходим к изготовлению наших тортов с современным подходом и огромной любовью.</p>
+                <p>У нас нет ничего лишнего, малый ассортимент, минималистичный вид продукции высокого качества. <span class='cake cake2'><b>TRAMONTO - это ничего лишнего!</b></span>.</p>
+                <p>Никакой мазни из мастики и отрицательных эмоций от ожидания увидеть копию Мона Лизы на Вашем торте, никакого загадочного синего цвета крема, который оказался не на столько загадочным. Мы за минимализм и за то, чтобы ожидание совпадало с реальностью</p>
+                <p>Добро пожаловать в новый мир тортов без лишнего. <span class='cake cake3'><b>TRAMONTO рад принять Ваш заказ!</b></span></p>
+            </div>
+        </section>
+        <section class='section2' id='team'>
+            <h1>Команда</h1>
+            <div class='team-wrapper'>
+                <div class='team-item team1'>
+                    <div class='team-item-top'></div>
+                    <div class='team-item-bottom'>
+                        <h2>Катерина</h2>
+                        <p>Наш менеджер и повар. Эстетика - её второе имя</p>
+                    </div>
+                </div>
+                <div class='team-item team2'>
+                    <div class='team-item-top'></div>
+                    <div class='team-item-bottom'>
+                        <h2>Захар</h2>
+                        <p>Технический директор и повар. Отвечает за все "Что? Где? Как?"</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class='section4' id='catalog'>
+            <h1>Наши начинки</h1>
+            <div class='catalog-wrapper'>
+                <div class='catalog-item catalog1'>
+                    <div class='catalog-item-top'></div>
+                    <div class='catalog-item-bottom'>
+                        <h2 class='catalog-item-name'>Вишня-йогурт</h2>
+                        <p class='catalog-item-descr'>Вишневый йогурт, воздушные взбитые сливки и измельченные ягоды вишни</p>
+                        <span class='catalog-item-price'>410 руб/кг</span>
+                    </div>
+                </div> 
+                <div class='catalog-item catalog2'>
+                    <div class='catalog-item-top'></div>
+                    <div class='catalog-item-bottom'>
+                        <h2 class='catalog-item-name'>Творожная малина</h2>
+                        <p class='catalog-item-descr'>Сырный мусс, натуральный творог и малиновый конфитюр</p>
+                        <span class='catalog-item-price'>440 руб/кг</span>
+                    </div>
+                </div>
+                <div class='catalog-item catalog3'>
+                    <div class='catalog-item-top'></div>
+                    <div class='catalog-item-bottom'>
+                        <h2 class='catalog-item-name'>По ГОСТу</h2>
+                        <p class='catalog-item-descr'>Сливочный крем, варёная сгущёнка, пушистое безе и миндальная крошка</p>
+                        <span class='catalog-item-price'>340 руб/кг</span>
+                    </div>
+                </div>
+                <div class='catalog-item catalog4'>
+                    <div class='catalog-item-top'></div>
+                    <div class='catalog-item-bottom'>
+                        <h2 class='catalog-item-name'>Сметанный</h2>
+                        <p class='catalog-item-descr'>Сметанный крем, кусочки ананаса и крошка грецкого ореха</p>
+                        <span class='catalog-item-price'>320 руб/кг</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class='section3' id='order'>
+            <div class='order-wrapper'>
+                <h1>Заявка</h1>
+                <form method="post" action = "" class='order-form' id="add-order">
+                    {% csrf_token %}
+
+                    <div class="input-box">
+                        {{ form.name }}
+                    </div>
+                    <div class="error"><div class="error-label">{{ name_error }}</div></div>
+                    <div class="input-box">
+                        {{ form.email }}
+                    </div>
+                    <div class="error"><div class="error-label">{{ email_error }}</div></div>
+                    <div class="input-box">
+                        {{ form.phone }}
+                    </div>
+                    <div class="error"><div class="error-label">{{ phone_error }}</div></div>
+    
+                    <label for="name">Имя:</label>
+                    <input id="name" type="text" name="name" maxlength="20" required>
+
+                    <label for="email">e-mail:</label>
+                    <input id="email" type="email" name="email" required>
+
+                    <label for="phone">Номер телефона:</label>
+                    <input id="phone" type="text" name="phone" maxlength="20" required>
+
+                    <input class='order-btn order-btn-send' type="submit"></input>
+                </form>  
+            </div>
+        </section>
+    </main>
+
+    <script src='https://kit.fontawesome.com/f77600b8df.js' crossorigin='anonymous'></script>
+    <script src="{%static 'main/js/script.js'%}"></script>
+
+    <footer>
+        <div class="footer">
+            <div class="row">
+                <a href="#"><i class="fa fa-vk"></i></a>
+                <a href="#"><i class="fa fa-telegram"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+            </div>
+        
+            <div class="row">
+                <ul>
+                    <li><a href="admin">Вход для работников</a></li>
+                    <li><a href="love">Мы любим TRAMONTO</a></li>
+                    <li><a href="#">Лицензия на марку</a></li>
+                </ul>
+            </div>
+        
+            <div class="row"> TRAMONTO Copyright © 2023 - Все права защищены || Выполнили: Захар Лунев, Катерина Катанаева </div>
+        </div>
+    </footer>
+</body>
+</html>

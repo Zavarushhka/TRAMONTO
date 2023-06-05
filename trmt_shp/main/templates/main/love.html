@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LOVE TRAMONTO</title>
+</head>
+<body>
+<div class = "container wish-acc">
+    <h3 class="table_name">Пользователи, которые уже с нами</h3>
+    <div class="container mtb-3">
+        <table class="table" id="table">
+            <thead>
+            <tr>
+                <th>№</th>
+                <th>Никнейм на сайте</th>
+            </tr>
+            </thead>
+            <tbody id="tbd">
+            {% for i in users %}
+                <tr>
+                    <td>{{ i.id }}</td>
+                    <td>{{ i.nickname }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static 'main/js/parse.js' %}"></script>
+</body>
+</html>
